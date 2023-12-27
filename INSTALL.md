@@ -12,7 +12,8 @@ We use an evironment with the following specifications, packages and dependencie
 - [Detectron2 v0.6](https://github.com/facebookresearch/detectron2/releases/tag/v0.6)
 - [NATTEN v0.14.4](https://github.com/SHI-Labs/NATTEN/releases/tag/v0.14.4)
 
-## Setup Instructions
+## Setup Instructions to build everything inside conda environment 
+
 
 - Create a conda environment
   
@@ -28,18 +29,14 @@ We use an evironment with the following specifications, packages and dependencie
   cd OneFormer
 
   # Install Pytorch
-  conda install pytorch==1.10.1 torchvision==0.11.2 cudatoolkit=11.3 -c pytorch -c conda-forge
+  pip install -r requirements.txt
 
   # Install opencv (required for running the demo)
-  pip3 install -U opencv-python
+  pip install -U opencv-python
 
   # Install detectron2
   python tools/setup_detectron2.py
 
-  # Install other dependencies
-  pip3 install git+https://github.com/cocodataset/panopticapi.git
-  pip3 install git+https://github.com/mcordts/cityscapesScripts.git
-  pip3 install -r requirements.txt
   ```
 
 - Setup wandb.
@@ -51,6 +48,10 @@ We use an evironment with the following specifications, packages and dependencie
   ```
 
 - Setup CUDA Kernel for MSDeformAttn. `CUDA_HOME` must be defined and points to the directory of the installed CUDA toolkit.
+```
+export CUDA_HOME=/path/to/oneformer/lib
+conda install cudatoolkit cudnn
+```
 
   ```bash
   # Setup MSDeformAttn
